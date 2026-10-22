@@ -293,3 +293,300 @@ tbody tr:hover { background: #fffdf5; }
   .page-title { font-size: 20px; }
   .top-actions .period-select { max-width: 105px; font-size: 10px; }
 }
+
+/* ==========================================
+   KOMPANY FINANCE — TELA DE LOGIN
+   ========================================== */
+
+#financeLogin {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  padding: 32px 20px;
+  background: #f5f5f2;
+  color: #20211f;
+
+  font-family: inherit;
+}
+
+#financeLogin[hidden] {
+  display: none !important;
+}
+
+.finance-login-card {
+  width: 100%;
+  max-width: 440px;
+  box-sizing: border-box;
+
+  padding: 42px 36px;
+  background: #ffffff;
+  border: 1px solid #e8e8e3;
+  border-radius: 18px;
+
+  box-shadow: 0 18px 55px rgba(25, 25, 20, 0.08);
+}
+
+.finance-login-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 42px;
+}
+
+.finance-login-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+
+  border-radius: 12px;
+  background: #f4c928;
+  color: #20211f;
+
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.finance-login-brand-name {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  color: #20211f;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.finance-login-brand-name span {
+  color: #8b8b83;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.finance-login-eyebrow {
+  margin-bottom: 10px;
+  color: #9a7b00;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+#financeLoginTitle {
+  margin: 0;
+  color: #20211f;
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.8px;
+  text-align: center;
+}
+
+.finance-login-subtitle {
+  margin: 12px 0 30px;
+  color: #777870;
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+#financeLoginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin: 0;
+}
+
+.finance-login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 100%;
+}
+
+.finance-login-field label {
+  color: #33342f;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.finance-login-field input {
+  width: 100%;
+  min-width: 0;
+  height: 49px;
+  box-sizing: border-box;
+
+  padding: 0 14px;
+  border: 1px solid #dedfd8;
+  border-radius: 9px;
+  outline: none;
+
+  background: #fbfbf9;
+  color: #20211f;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.finance-login-field input::placeholder {
+  color: #a0a097;
+}
+
+.finance-login-field input:focus {
+  border-color: #d8b20e;
+  box-shadow: 0 0 0 3px rgba(244, 201, 40, 0.18);
+}
+
+.finance-password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.finance-password-wrap input {
+  padding-right: 84px;
+}
+
+.finance-toggle-password {
+  position: absolute;
+  right: 12px;
+
+  padding: 6px 4px;
+  border: 0;
+  background: transparent;
+  color: #6d5a00;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.finance-toggle-password:hover {
+  color: #20211f;
+}
+
+.finance-login-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 51px;
+  margin-top: 4px;
+  padding: 12px 18px;
+
+  border: 0;
+  border-radius: 9px;
+  background: #f4c928;
+  color: #20211f;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.finance-login-submit:hover {
+  background: #e8bc12;
+  transform: translateY(-1px);
+}
+
+.finance-login-submit:focus-visible,
+.finance-toggle-password:focus-visible {
+  outline: 3px solid rgba(190, 150, 0, 0.4);
+  outline-offset: 3px;
+}
+
+.finance-login-error {
+  margin: -5px 0 0;
+  padding: 11px 12px;
+
+  border: 1px solid #f1c5c5;
+  border-radius: 8px;
+  background: #fff2f2;
+  color: #a42c2c;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.finance-login-error[hidden] {
+  display: none !important;
+}
+
+.finance-login-footnote {
+  margin-top: 30px;
+  padding-top: 19px;
+  border-top: 1px solid #eeeeea;
+
+  color: #999a92;
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Mantém a plataforma escondida antes do login */
+#financeApp {
+  display: none;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+  #financeLogin {
+    align-items: center;
+    padding: 20px 14px;
+  }
+
+  .finance-login-card {
+    max-width: 100%;
+    padding: 32px 22px;
+    border-radius: 15px;
+  }
+
+  .finance-login-brand {
+    margin-bottom: 32px;
+  }
+
+  #financeLoginTitle {
+    font-size: 25px;
+  }
+
+  .finance-login-subtitle {
+    font-size: 13px;
+  }
+}
+
+/* Acessibilidade: respeita preferência por menos animações */
+@media (prefers-reduced-motion: reduce) {
+  .finance-login-field input,
+  .finance-login-submit {
+    transition: none;
+  }
+}
