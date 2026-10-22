@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4c928">
+  <meta name="description" content="Kompany Finance — painel conceitual de gestão financeira.">
+  <title>Kompany Finance | Gestão financeira inteligente</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">K.</div>
+      <div class="brand-name">KOMPANY<span>FINANCE</span></div>
+    </div>
+
+    <div class="nav-label">MENU PRINCIPAL</div>
+    <nav class="nav" aria-label="Menu principal">
+      <button class="active" data-page="dashboard"><span class="nav-icon">⌂</span>Visão geral</button>
+      <button data-page="transactions"><span class="nav-icon">↔</span>Lançamentos</button>
+      <button data-page="budgets"><span class="nav-icon">▤</span>Orçamentos</button>
+      <button data-page="reports"><span class="nav-icon">▥</span>Relatórios</button>
+    </nav>
+
+    <div class="side-bottom">
+      <div class="demo-note">
+        <strong>✦ Ambiente demonstrativo</strong>
+        Dados de exemplo podem ser editados. Seus lançamentos ficam salvos neste navegador.
+      </div>
+      <div class="profile">
+        <div class="avatar">KF</div>
+        <div><strong>Minha empresa</strong><small>Plano demonstrativo</small></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">☰</button>
+        <div>
+          <div class="eyebrow" id="eyebrow">PAINEL FINANCEIRO</div>
+          <h1 class="page-title" id="pageTitle">Visão geral</h1>
+          <div class="page-sub" id="pageSub">Acompanhe a saúde financeira do seu negócio.</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <select class="period-select" id="periodSelect" aria-label="Período">
+          <option value="month">Este mês</option>
+          <option value="last">Mês anterior</option>
+          <option value="year">Este ano</option>
+          <option value="all">Todo o período</option>
+        </select>
+        <button class="primary-btn" id="quickAdd">＋ Novo lançamento</button>
+      </div>
+    </header>
+
+    <section class="section active" id="dashboard">
+      <div class="welcome">
+        <div>
+          <h2>Olá! Vamos cuidar dos números?</h2>
+          <p>Uma visão clara para decisões mais inteligentes.</p>
+        </div>
+        <div class="welcome-tag">✦ KOMPANY FINANCE</div>
+      </div>
+
+      <div class="metrics">
+        <article class="metric">
+          <div class="metric-top"><span>Saldo do período</span><span class="metric-icon">◈</span></div>
+          <div class="metric-value" id="metricBalance">R$ 0,00</div>
+          <div class="metric-foot">Receitas menos despesas</div>
+        </article>
+        <article class="metric">
+          <div class="metric-top"><span>Receitas</span><span class="metric-icon">↗</span></div>
+          <div class="metric-value" id="metricIncome">R$ 0,00</div>
+          <div class="metric-foot"><span class="positive">Entradas</span> no período</div>
+        </article>
+        <article class="metric">
+          <div class="metric-top"><span>Despesas</span><span class="metric-icon">↘</span></div>
+          <div class="metric-value" id="metricExpense">R$ 0,00</div>
+          <div class="metric-foot">Saídas no período</div>
+        </article>
+        <article class="metric">
+          <div class="metric-top"><span>Taxa de economia</span><span class="metric-icon">％</span></div>
+          <div class="metric-value" id="metricRate">0%</div>
+          <div class="metric-foot">Saldo positivo sobre receitas</div>
+        </article>
+      </div>
+
+      <div class="grid-two">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Fluxo financeiro</div>
+              <div class="panel-desc">Comparativo de receitas e despesas por mês</div>
+            </div>
+            <div class="legend">
+              <span><i class="dot" style="background:#f4c928"></i>Receitas</span>
+              <span><i class="dot" style="background:#dcdedb"></i>Despesas</span>
+            </div>
+          </div>
+          <div class="bar-chart" id="flowChart"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Despesas por categoria</div>
+              <div class="panel-desc">Onde seu dinheiro está indo</div>
+            </div>
+          </div>
+          <div class="category-list" id="categoryChart"></div>
+        </article>
+      </div>
+
+      <article class="panel table-panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Últimos lançamentos</div>
+            <div class="panel-desc">Movimentações recentes da sua empresa</div>
+          </div>
+          <button class="secondary-btn" data-goto="transactions">Ver todos ↗</button>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Descrição</th><th>Categoria</th><th>Data</th><th>Tipo</th><th>Valor</th></tr></thead>
+            <tbody id="recentTable"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="transactions">
+      <article class="panel table-panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Todos os lançamentos</div>
+            <div class="panel-desc">Cadastre e acompanhe as movimentações financeiras.</div>
+          </div>
+          <button class="primary-btn" id="addTransaction">＋ Adicionar</button>
+        </div>
+        <div class="panel-head" style="padding-top:0;align-items:center">
+          <div class="table-tools">
+            <input class="search" id="searchInput" placeholder="Buscar descrição..." aria-label="Buscar descrição">
+            <div class="filters">
+              <select id="typeFilter">
+                <option value="all">Todos os tipos</option>
+                <option value="income">Receitas</option>
+                <option value="expense">Despesas</option>
+              </select>
+              <select id="categoryFilter">
+                <option value="all">Todas as categorias</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Descrição</th><th>Categoria</th><th>Data</th><th>Tipo</th><th>Valor</th><th>Ações</th></tr></thead>
+            <tbody id="transactionsTable"></tbody>
+          </table>
+        </div>
+        <div class="panel-head" style="margin:0;padding-top:14px">
+          <span class="small-muted" id="transactionCount">0 lançamentos</span>
+          <button class="secondary-btn" id="exportCsv">Exportar CSV ↓</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="budgets">
+      <div class="grid-two">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Limites por categoria</div>
+              <div class="panel-desc">Defina quanto pretende gastar por mês.</div>
+            </div>
+            <button class="primary-btn" id="addBudget">＋ Novo limite</button>
+          </div>
+          <div class="budget-list" id="budgetList"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Resumo do orçamento</div>
+              <div class="panel-desc">Visão geral dos limites cadastrados</div>
+            </div>
+          </div>
+          <div class="report-summary" style="grid-template-columns:1fr">
+            <div class="report-card"><span>Orçamento total</span><strong id="budgetTotal">R$ 0,00</strong></div>
+            <div class="report-card"><span>Despesas consideradas</span><strong id="budgetSpent">R$ 0,00</strong></div>
+            <div class="report-card"><span>Saldo disponível</span><strong id="budgetRemaining">R$ 0,00</strong></div>
+          </div>
+          <p class="small-muted">Os gastos são calculados a partir das despesas do mês atual.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="reports">
+      <article class="panel" style="margin-bottom:16px">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Relatório financeiro</div>
+            <div class="panel-desc">Resumo calculado com base nos lançamentos cadastrados.</div>
+          </div>
+          <div class="report-actions">
+            <button class="secondary-btn" id="reportCsv">Exportar CSV ↓</button>
+            <button class="primary-btn" id="printReport">Imprimir relatório</button>
+          </div>
+        </div>
+        <div class="report-summary">
+          <div class="report-card"><span>Total de receitas</span><strong id="reportIncome">R$ 0,00</strong></div>
+          <div class="report-card"><span>Total de despesas</span><strong id="reportExpense">R$ 0,00</strong></div>
+          <div class="report-card"><span>Resultado líquido</span><strong id="reportNet">R$ 0,00</strong></div>
+        </div>
+      </article>
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Histórico mensal</div>
+            <div class="panel-desc">Evolução financeira nos últimos seis meses.</div>
+          </div>
+        </div>
+        <div class="bar-chart" id="reportChart"></div>
+      </article>
+    </section>
+
+    <div class="footer-note">Kompany Finance · Projeto conceitual desenvolvido por <strong>Kompany.code</strong></div>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="transactionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="modalTitle">Novo lançamento</h2>
+      <button class="close-btn" id="closeModal" aria-label="Fechar">×</button>
+    </div>
+    <form id="transactionForm">
+      <input type="hidden" id="editId">
+      <div class="form-grid">
+        <div class="field full"><label for="description">Descrição</label><input id="description" required maxlength="90" placeholder="Ex.: Mensalidade de serviço"></div>
+        <div class="field"><label for="txType">Tipo</label><select id="txType"><option value="income">Receita</option><option value="expense">Despesa</option></select></div>
+        <div class="field"><label for="amount">Valor (R$)</label><input id="amount" type="number" min="0.01" step="0.01" required placeholder="0,00"></div>
+        <div class="field"><label for="txCategory">Categoria</label><select id="txCategory"></select></div>
+        <div class="field"><label for="txDate">Data</label><input id="txDate" type="date" required></div>
+        <div class="field full"><label for="notes">Observações (opcional)</label><input id="notes" maxlength="180" placeholder="Detalhes adicionais"></div>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="secondary-btn" id="cancelModal">Cancelar</button>
+        <button type="submit" class="primary-btn">Salvar lançamento</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="budgetModal" role="dialog" aria-modal="true" aria-labelledby="budgetModalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="budgetModalTitle">Novo limite de orçamento</h2>
+      <button class="close-btn" id="closeBudgetModal" aria-label="Fechar">×</button>
+    </div>
+    <form id="budgetForm">
+      <div class="form-grid">
+        <div class="field full"><label for="budgetCategory">Categoria</label><select id="budgetCategory" required></select></div>
+        <div class="field full"><label for="budgetAmount">Limite mensal (R$)</label><input id="budgetAmount" type="number" min="0.01" step="0.01" required placeholder="Ex.: 1500"></div>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="secondary-btn" id="cancelBudget">Cancelar</button>
+        <button type="submit" class="primary-btn">Salvar limite</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
